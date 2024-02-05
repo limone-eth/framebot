@@ -1,7 +1,13 @@
 import {Request, Response} from "express";
 import {AlchemyWebhookEvent} from "../../utils/alchemy";
 import {constants} from "../../constants";
-import {Network, TransactionUrlWebsite, formatAddress, formatBigNumber, getTransactionUrl} from "../../utils";
+import {
+  Network,
+  TransactionUrlWebsite,
+  formatAddress,
+  formatBigNumber,
+  getTransactionUrl,
+} from "../../utils";
 import {providers} from "ethers";
 import {decodeTransferEvent} from "../../utils/smart-contracts/decode-events";
 import {getFarcasterIdentity} from "../../utils/web3-bio";
@@ -39,7 +45,7 @@ export async function processTransferEvent(
 
   const txUrl = getTransactionUrl(
     logsData.transaction.hash,
-    TransactionUrlWebsite.ZAPPER,
+    TransactionUrlWebsite.TX_FRAME,
     Network.BASE
   );
 
@@ -80,7 +86,7 @@ export async function processTransferEvent(
     )} $${constants.TOKEN_SYMBOL} to ${toText}`;
 
     console.log(text, txUrl);
-    const castHash = await publishCast(`${text}\n\n${txUrl}`);
+    const castHash = await publishCast(`${text}`, txUrl);
     console.log(`Successfully published cast ${castHash}`);
   }
 }
