@@ -45,7 +45,7 @@ export async function processTransferEvent(
 
   const txUrl = getTransactionUrl(
     logsData.transaction.hash,
-    TransactionUrlWebsite.TX_FRAME,
+    TransactionUrlWebsite.ONCEUPON,
     Network.BASE
   );
 

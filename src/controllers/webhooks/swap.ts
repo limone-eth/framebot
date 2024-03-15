@@ -44,7 +44,7 @@ export async function processPoolSwapEvent(
 
   const txUrl = getTransactionUrl(
     logsData.transaction.hash,
-    TransactionUrlWebsite.TX_FRAME,
+    TransactionUrlWebsite.ONCEUPON,
     Network.BASE
   );
 
